@@ -48,7 +48,7 @@ html, body {
 }
 
 .chat-body .chat-them .chat-them-profile-img{
-    background-image: url(https://cdn.usegalileo.ai/sdxl10/37fe0ddd-b470-45ec-92dd-b7cea5f7c6f9.png);
+    background-image: url(../image/user-them.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -95,7 +95,7 @@ html, body {
 }
 
 .chat-body .chat-me .chat-me-profile-img{
-    background-image: url(https://cdn.usegalileo.ai/sdxl10/0c5da0ee-1061-4546-9703-faddf3546064.png);
+    background-image: url(../image/user-me.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
