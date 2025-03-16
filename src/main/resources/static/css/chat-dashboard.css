@@ -1,16 +1,40 @@
+input:focus {
+    outline: none;
+    border: none;
+}
+
 .chat-dashboard-container {
     display: flex;
-    height: 100vh; /* 전체 화면 높이 */
-    background-color: #f4f7fc; /* 배경색을 밝은 색으로 */
+    height: 100%;
+    background-color: #f4f7fc;
 }
 
 .chat-dashboard-container .dashboard-left {
     width: 30%;
     padding: 20px;
     height: 100%;
-    background-color: #ffffff; /* 왼쪽 영역 배경색 */
-    border-right: 1px solid #ddd; /* 오른쪽 경계선 */
-    overflow-y: auto; /* 긴 리스트가 있을 때 스크롤 */
+    background-color: #ffffff;
+    border-right: 1px solid #ddd;
+    overflow-y: auto;
+}
+
+.chat-dashboard-container .dashboard-left .selected-room-notice{
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    border-radius: 5px;
+    border: solid 1px black;
+}
+
+.chat-dashboard-container .dashboard-left .selected-room-notice span{
+    width: 30%;
+    min-width: 150px;
+    font-weight: bold;
+}
+
+.chat-dashboard-container .dashboard-left .selected-room-notice span{
+    width: 70%;
+    border: none;
 }
 
 .chat-dashboard-container .dashboard-left h2 {

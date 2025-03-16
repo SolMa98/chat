@@ -26,9 +26,8 @@ function reConnect(roomId){
             stompClient.connect({}, function() {
                 console.log("새로운 STOMP 연결이 완료되었습니다.");
                 stompClient.subscribe('/sub/' + roomId, onMessageReceived);
-                let chatSelectedRoom = document.getElementById("selected-chat-room");
-                chatSelectedRoom.value = roomId;
                 roomKey = roomId;
+                chatRoomChangeEvent(roomKey);
 
             }, onError);
 
@@ -51,8 +50,7 @@ function onConnected() {
         if (data) {
             roomKey = data.roomId;
             stompClient.subscribe('/sub/' + roomKey, onMessageReceived);
-            let chatSelectedRoom = document.getElementById("selected-chat-room");
-            chatSelectedRoom.value = roomKey;
+            chatRoomChangeEvent(roomKey);
 
             // 새로운 채팅방 생성 공지
             stompClient.send("/pub/chat/new");
@@ -84,6 +82,10 @@ function onMessageReceived(payload) {
         }else{
             makeThemMessage(message.content);
         }
+
+        // 채팅창 스크롤
+        const chatBox = document.getElementById("chatMessageView");
+        chatBox.scrollTo({ top: chatBox.scrollHeight, behavior: "smooth" });
     }
 }
 
@@ -111,9 +113,12 @@ function sendKeyDownEvent(event){
 
 // 내가 보낸 채팅방 메시지
 function makeMyMessage(message){
-    let myMessageHtml = `<div class="me-message">
-                                    <div class="message">${message}</div>
-                                    <div class="emoji">🤖</div>
+    let myMessageHtml = `<div class="chat-me">
+                                    <div class="chat-me-message">
+                                        <p class="chat-me-name">me</p>
+                                        <p class="chat-me-text">${message}</p>
+                                    </div>
+                                    <div class="chat-me-profile-img"></div>
                                 </div>`;
 
     document.getElementById("chatMessageView").innerHTML += (myMessageHtml);
@@ -121,10 +126,13 @@ function makeMyMessage(message){
 
 // 상대방이 보낸 채팅방 메시지
 function makeThemMessage(message){
-    let themMessageHtml = `<div class="them-message">
-                                        <div class="emoji">👨‍💻</div>
-                                        <div class="message">${message}</div>
-                                    </div>`;
+    let themMessageHtml = `<div class="chat-them">
+                                    <div class="chat-them-profile-img"></div>
+                                    <div class="chat-them-message">
+                                        <p class="chat-them-name">User</p>
+                                        <p class="chat-them-text">${message}</p>
+                                    </div>
+                                </div>`;
 
     document.getElementById("chatMessageView").innerHTML += themMessageHtml;
 }
