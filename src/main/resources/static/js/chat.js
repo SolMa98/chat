@@ -53,6 +53,9 @@ function onConnected() {
             stompClient.subscribe('/sub/' + roomKey, onMessageReceived);
             let chatSelectedRoom = document.getElementById("selected-chat-room");
             chatSelectedRoom.value = roomKey;
+
+            // 새로운 채팅방 생성 공지
+            stompClient.send("/pub/chat/new");
         } else {
             console.error('Data is undefined');
         }
@@ -70,11 +73,17 @@ function onError(error) {
 function onMessageReceived(payload) {
     let message = JSON.parse(payload.body);
 
-    // 내가 보낸 메시지와 상대가 보낸 메시지 구분
-    if(message.senderKey === senderKey){
-        makeMyMessage(message.content);
+    if(message.sender === "system"){
+        if(message?.content === "NEW_ROOM"){
+            getRoomList();
+        }
     }else{
-        makeThemMessage(message.content);
+        // 내가 보낸 메시지와 상대가 보낸 메시지 구분
+        if(message.senderKey === senderKey){
+            makeMyMessage(message.content);
+        }else{
+            makeThemMessage(message.content);
+        }
     }
 }
 
@@ -83,7 +92,7 @@ function sendMessage(event) {
     let messageInputElement = document.getElementById("chatMessage");
 
     let message = {
-        channelId: roomKey,
+        roomId: roomKey,
         sender: "agent",
         senderKey: senderKey,
         content: messageInputElement.value

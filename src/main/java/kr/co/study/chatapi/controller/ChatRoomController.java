@@ -26,7 +26,6 @@ public class ChatRoomController {
      * 채팅방 생성
      */
     @PostMapping
-    @SendTo("/chat/list")
     public ChatRoomDTO createRoom(){
         return chatRoomService.createRoom();
     }

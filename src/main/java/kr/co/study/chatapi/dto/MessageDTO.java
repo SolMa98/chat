@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class MessageDTO {
-    private String channelId;
+    private String roomId;
     private SenderType sender;
     private String senderKey;
     private String content;
@@ -12,6 +12,7 @@ public class MessageDTO {
     // 메시지 보내는 사람 타입
     public enum SenderType {
         customer,
-        agent
+        agent,
+        system
     }
 }
