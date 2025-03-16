@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko" th:fragment="chatWindow">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/chat.css}">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    <script th:src="@{/js/chat.js}"></script>
+</head>
+<body>
+    <input type="hidden" id="chatType" value="agent">
+    <div class="chat-container">
+        <div class="chat-header">
+            <input type="text" value="DH CHAT AGENT" readonly>
+        </div>
+        <div class="chat-body" id="chatMessageView">
+
+        </div>
+        <div class="chat-bottom">
+            <input type="text" id="chatMessage" onkeydown="sendKeyDownEvent(event)"/>
+        </div>
+    </div>
+</body>
+</html>

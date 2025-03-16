@@ -1,0 +1,142 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.chat-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+}
+
+.chat-container .chat-header {
+    width: 100%;
+    display: flex;
+    height: 10%;
+}
+
+.chat-container .chat-header input {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 50px;
+    font-size: 25px;
+    font-weight: bold;
+    color: white;
+    background: rgb(128, 128, 128);
+    border: none;
+}
+
+.chat-container .chat-body {
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+    background: #cccccc;
+    padding: 10px;
+    overflow-y: auto;
+    gap: 10px;
+}
+
+.chat-container .chat-bottom {
+    width: 100%;
+    display: flex;
+    height: 10%;
+}
+
+.chat-container .chat-bottom input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+}
+
+/* 고객 이모티콘과 말풍선 */
+.them-message {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+}
+
+.them-message .emoji {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #4CAF50; /* 고객 이모티콘 색 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+}
+
+.them-message .message {
+    background-color: #ffffff;
+    color: black;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 60%;
+    word-wrap: break-word;
+    position: relative; /* 말풍선의 말꼬리를 위한 설정 */
+}
+
+/* 고객 말풍선 말꼬리 */
+.them-message .message::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -15px;
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #ffffff;
+    transform: translateY(-50%);
+}
+
+/* 요원 이모티콘과 말풍선 */
+.me-message {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 20px;
+}
+
+.me-message .emoji {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #2196F3; /* 요원 이모티콘 색 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+}
+
+.me-message .message {
+    background-color: #3b3b3b;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 60%;
+    word-wrap: break-word;
+    position: relative; /* 말풍선의 말꼬리를 위한 설정 */
+}
+
+/* 요원 말풍선 말꼬리 */
+.me-message .message::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -15px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 10px solid #3b3b3b;
+    transform: translateY(-50%);
+}
