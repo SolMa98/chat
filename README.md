@@ -1,7 +1,7 @@
 # 채팅창
 
 ### 채팅창 대시보드
-![chat-dashboard.png](chat-dashboard.png)
+![chat-dashboard.png](readme_image/chat-dashboard.png)
 현재 미완
 
 동작 기능
