@@ -11,12 +11,37 @@
 <div class="chat-dashboard-container">
     <!-- 왼쪽: 채팅방 리스트 -->
     <div class="dashboard-left">
-        <div class="selected-room-notice">
-            <span>현재 선택된 채팅방 : </span>
-            <input type="text" id="selected-chat-room" readonly>
+        <div class="selected-room-section">
+            <div class="selected-room-icon"></div>
+            <div class="selected-room-text-section">
+                <h1 class="selected-room-title">대화 채팅방</h1>
+                <input type="text" class="selected-room-key" id="selected-chat-room" readonly />
+            </div>
         </div>
-        <h2>채팅방 리스트</h2>
+
+        <div class="room-list-title-section">
+            <div class="room-list-title">
+                <div class="text-black" data-icon="ChatCircleDots" data-size="24px" data-weight="fill">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                        <path d="M128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24ZM84,140a12,12,0,1,1,12-12A12,12,0,0,1,84,140Zm44,0a12,12,0,1,1,12-12A12,12,0,0,1,128,140Zm44,0a12,12,0,1,1,12-12A12,12,0,0,1,172,140Z"></path>
+                    </svg>
+                </div>
+                <p class="title-text">채팅방 리스트</p>
+            </div>
+        </div>
+
         <ul id="room-list-section">
+            <div class="room-list">
+                <div class="room-list-icon" data-icon="ChatCircleDots" data-size="24px" data-weight="regular">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                        <path d="M140,128a12,12,0,1,1-12-12A12,12,0,0,1,140,128ZM84,116a12,12,0,1,0,12,12A12,12,0,0,0,84,116Zm88,0a12,12,0,1,0,12,12A12,12,0,0,0,172,116Zm60,12A104,104,0,0,1,79.12,219.82L45.07,231.17a16,16,0,0,1-20.24-20.24l11.35-34.05A104,104,0,1,1,232,128Zm-16,0A88,88,0,1,0,51.81,172.06a8,8,0,0,1,.66,6.54L40,216,77.4,203.53a7.85,7.85,0,0,1,2.53-.42,8,8,0,0,1,4,1.08A88,88,0,0,0,216,128Z"></path>
+                    </svg>
+                </div>
+                <div class="room-list-info">
+                    <p class="room-key">131bae87-3caa-4c39-b3c4-8cc9e2725d34</p>
+                    <p class="room-message">Selected chat room</p>
+                </div>
+            </div>
             <li>
                 <span>채팅방 이름</span>
             </li>

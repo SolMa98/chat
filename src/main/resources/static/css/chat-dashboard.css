@@ -44,8 +44,10 @@ input:focus {
 }
 
 .chat-dashboard-container .dashboard-left ul {
-    list-style-type: none; /* 기본 리스트 스타일 없애기 */
+    list-style-type: none;
     padding: 0;
+    height: calc(100% - 179px);
+    overflow: auto;
 }
 
 .chat-dashboard-container .dashboard-left li {
@@ -81,4 +83,126 @@ input:focus {
 .chat-dashboard-container .dashboard-right .chat-section{
     height:calc(100% - 20px);
     padding: 10px;
+}
+
+.chat-dashboard-container .room-list {
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    background-color: rgb(255 255 255);
+    gap: 1rem;
+    display: flex;
+    align-items: center;
+    min-height: 40px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 1px solid #cccccc;
+    margin-bottom: 5px;
+}
+
+.chat-dashboard-container .room-list:hover {
+    background-color: #b3e0ff !important;
+}
+
+.chat-dashboard-container .room-list.active{
+    background-color: #e6f7ff;
+}
+
+.chat-dashboard-container .room-list .room-list-icon{
+    border-radius: 0.5rem;
+    color: rgb(0 0 0);
+    background-color: rgb(238 238 238);
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+}
+
+.chat-dashboard-container .room-list .room-list-info{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.chat-dashboard-container .room-list .room-list-info .room-key{
+    line-height: 1.5;
+    font-weight: 500;
+    font-size: 0.75rem;
+    color: rgb(0 0 0);
+    margin: 0;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+}
+
+.chat-dashboard-container .room-list .room-list-info .room-message{
+    margin: 0;
+    font-size: 0.7rem;
+    line-height: 1.5;
+    font-weight: 400;
+    color: rgb(107 107 107);
+}
+
+.chat-dashboard-container .room-list-title-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1em;
+    min-height: 44px;
+}
+
+.chat-dashboard-container .room-list-title-section .room-list-title {
+    padding: 0.5rem 1rem;
+    gap: 0.75rem;
+    display: flex;
+    align-items: center;
+    background-color: rgb(238 238 238);
+    border-radius: 10px;
+}
+
+.chat-dashboard-container .room-list-title-section .room-list-title .title-text {
+    line-height: 1.5;
+    font-weight: 500;
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+.chat-dashboard-container .selected-room-section {
+    display: flex;
+    gap: 0.75rem;
+    min-height: 47px;
+}
+
+.chat-dashboard-container .selected-room-section .selected-room-icon{
+    background-image: url(../image/chat_room.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 80%;
+    border-radius: 9999px;
+    width: 2.5rem;
+    height: 2.5rem;
+    aspect-ratio: 1 / 1;
+}
+
+.chat-dashboard-container .selected-room-section .selected-room-text-section{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.chat-dashboard-container .selected-room-section .selected-room-text-section .selected-room-title{
+    line-height: 1.5;
+    font-weight: bold;
+    font-size: 1rem;
+    margin: 0;
+}
+
+.chat-dashboard-container .selected-room-section .selected-room-text-section .selected-room-key{
+    color: rgb(107 107 107);
+    line-height: 1.5;
+    font-weight: 400;
+    font-size: 0.875rem;
+    margin: 0;
+    border: none;
 }
