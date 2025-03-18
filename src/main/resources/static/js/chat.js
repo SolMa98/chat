@@ -97,11 +97,47 @@ function sendMessage(event) {
         roomId: roomKey,
         sender: "agent",
         senderKey: senderKey,
+        type: "message",
         content: messageInputElement.value
     }
 
     messageInputElement.value = "";
     stompClient.send("/pub/chat/message", {}, JSON.stringify(message));
+}
+
+// 파일 전송 버튼 클릭
+function sendFileMessage(){
+    let fileElement = document.getElementById("fileMessage");
+    fileElement.click();
+}
+
+// 파일 전송
+function handleFileChange(e){
+    console.log("ooo")
+    let imgFormData = new FormData();
+    imgFormData.append('file', e.target.files[0]);
+
+    fetch('http://localhost:8080/chat/upload/file', {
+        method: 'POST',
+        body: imgFormData
+    })
+        .then(response => response.json())
+        .then(data => {
+            let message = {
+                roomId: roomKey,
+                sender: "agent",
+                senderKey: senderKey,
+                content: "",
+                type: "file",
+                fileUrl: data.fileUrl
+            }
+
+            // WebSocket을 통해 파일 URL 전송
+            stompClient.send("/pub/chat/message", {}, JSON.stringify(message));
+        })
+        .catch(error => {
+            console.error("파일 업로드 실패:", error);
+        });
 }
 
 // 메시지 입력창 키다운 이벤트

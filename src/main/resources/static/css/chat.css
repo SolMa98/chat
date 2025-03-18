@@ -223,3 +223,7 @@ html, body {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
+.display-none {
+    display: none !important;
+}
