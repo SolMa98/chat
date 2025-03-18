@@ -26,15 +26,6 @@ public class ChatController {
     @GetMapping("/dashboard")
     public String chatDashBoard(HttpServletRequest request) { return "chat/chat-dashboard"; }
 
-    @GetMapping("/pub")
-    public String pubPageOpen(@RequestParam String page){
-        if(page.equals("1")){
-            return "chat/pub";
-        }else{
-            return "chat/pub2";
-        }
-    }
-
     @PostMapping("/upload/file")
     @ResponseBody
     public ResponseEntity<Map<String, String>> uploadFile(MultipartFile file) {
