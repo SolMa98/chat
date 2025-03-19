@@ -78,9 +78,17 @@ function onMessageReceived(payload) {
     }else{
         // 내가 보낸 메시지와 상대가 보낸 메시지 구분
         if(message.senderKey === senderKey){
-            makeMyMessage(message.content);
+            if(message.type === "file"){
+                makeFileMessage(message.fileUrl, "me");
+            }else{
+                makeMyMessage(message.content);
+            }
         }else{
-            makeThemMessage(message.content);
+            if(message.type === "file"){
+                makeFileMessage(message.fileUrl, "them");
+            }else{
+                makeThemMessage(message.content);
+            }
         }
 
         // 채팅창 스크롤
@@ -158,6 +166,27 @@ function makeMyMessage(message){
                                 </div>`;
 
     document.getElementById("chatMessageView").innerHTML += (myMessageHtml);
+}
+
+function makeFileMessage(file, sender) {
+    let senderClass = "me";
+    let myProfileHtml = `<div class="chat-${senderClass}-profile-img"></div>`;
+    let themProfileHtml = "";
+    if(sender === "them"){
+        senderClass = "them";
+        myProfileHtml = "";
+        themProfileHtml = `<div class="chat-${senderClass}-profile-img"></div>`;
+    }
+
+    let myFileMessageHtml = `<div class="chat-${senderClass}">
+                                        ${themProfileHtml}
+                                        <div class="chat-${senderClass}-message">
+                                            <p class="chat-${senderClass}-name">User</p>
+                                            <img class="chat-${senderClass}-file" src="${file}"  alt="이미지"/>
+                                        </div>
+                                        ${myProfileHtml}
+                                    </div>`;
+    document.getElementById("chatMessageView").innerHTML += (myFileMessageHtml);
 }
 
 // 상대방이 보낸 채팅방 메시지
